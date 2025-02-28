@@ -356,7 +356,6 @@ static inline struct vm_area_struct *binder_alloc_get_vma(
 extern struct task_struct *binder_buff_owner(struct binder_alloc *alloc);
 #endif
 
-static struct binder_buffer *binder_alloc_new_buf_locked(
 static void debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
 {
 	/*
