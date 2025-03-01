@@ -3706,9 +3706,6 @@ static void binder_transaction(struct binder_proc *proc,
 		target_proc = target_thread->proc;
 		target_proc->tmp_ref++;
 		binder_inner_proc_unlock(target_thread->proc);
-#ifdef BINDER_WATCHDOG
-		e->service[0] = '\0';
-#endif
 #ifdef CONFIG_MILLET
 		if (target_proc
 			&& target_proc->tsk
@@ -3777,9 +3774,6 @@ static void binder_transaction(struct binder_proc *proc,
 			goto err_dead_binder;
 		}
 		e->to_node = target_node->debug_id;
-#ifdef BINDER_WATCHDOG
-		strncpy(e->service, target_node->name, MAX_SERVICE_NAME_LEN);
-#endif
 #ifdef CONFIG_MILLET
 		if (target_proc
 			&& target_proc->tsk
